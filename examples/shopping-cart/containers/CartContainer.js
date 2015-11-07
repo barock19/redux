@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { checkout } from '../actions'
+import { cartSelectors } from "../selectors/CartSelectors";
 import { getTotal, getCartProducts } from '../reducers'
 import Cart from '../components/Cart'
 
@@ -28,14 +29,7 @@ CartContainer.propTypes = {
   checkout: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return {
-    products: getCartProducts(state),
-    total: getTotal(state)
-  }
-}
-
 export default connect(
-  mapStateToProps,
+  cartSelectors,
   { checkout }
 )(CartContainer)

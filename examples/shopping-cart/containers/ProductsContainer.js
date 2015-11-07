@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { addToCart } from '../actions'
-import { getVisibleProducts } from '../reducers/products'
+import { visbileProductSelectors } from '../selectors/ProductSelectors'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
 
@@ -31,13 +31,7 @@ ProductsContainer.propTypes = {
   addToCart: PropTypes.func.isRequired
 }
 
-function mapStateToProps(state) {
-  return {
-    products: getVisibleProducts(state.products)
-  }
-}
-
 export default connect(
-  mapStateToProps,
+  visbileProductSelectors,
   { addToCart }
 )(ProductsContainer)
